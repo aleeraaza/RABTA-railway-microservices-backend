@@ -3,6 +3,7 @@ import express, { type Request, type Response } from "express";
 import { corsMiddleware } from "./middleware/cors.middleware.js";
 import helmet from "helmet";
 import { reqLogger } from "./middleware/reqLogger.middleware.js";
+import authRouter from "../src/module/auth/auth.route.js";
 
 export const app = express();
 
@@ -26,3 +27,5 @@ app.get("/health-check", (req: Request, res: Response) => {
     message: "ok",
   });
 });
+
+app.use("api/v1/auth", authRouter);
