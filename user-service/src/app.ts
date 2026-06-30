@@ -18,6 +18,8 @@ app.use(reqLogger);
 app.use(express.json());
 app.use(cookieParser());
 
+app.use("/api/v1/auth", authRouter);
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello from Server.js  of user-service");
 });
@@ -27,5 +29,3 @@ app.get("/health-check", (req: Request, res: Response) => {
     message: "ok",
   });
 });
-
-app.use("api/v1/auth", authRouter);
